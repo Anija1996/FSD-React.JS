@@ -78,50 +78,52 @@ import axios from'axios';
 
 // Task-3 - POST 
 //--------------
-export default function App(){
-  const [title,setTitle] = useState("");
-  const [body,setBody] = useState("");
-  const [error,setError] = useState(null);
-  const [loading,setLoading] = useState(false);
-  const [post,setPost] = useState(null);
-  const [successMessage, setSuccessDetails] = useState("");
+// export default function App(){
+//   const [title,setTitle] = useState("");
+//   const [body,setBody] = useState("");
+//   const [error,setError] = useState(null);
+//   const [loading,setLoading] = useState(false);
+//   const [post,setPost] = useState(null);
+//   const [successMessage, setSuccessMessage] = useState("");
 
-  async function postDetails() {
-    try{
-      setLoading(true);
-      const resp = await axios.post("https://jsonplaceholder.typicode.com/posts",{title,body});
-      setPost(resp.data);
-      setSuccessDetails("Posted successfully")
-      console.log(resp.data);
+//   async function postDetails() {
+//     try{
+//       setError(null);
+//       setLoading(true);
+//       const resp = await axios.post("https://jsonplaceholder.typicode.com/posts",{title,body});
+//       setPost(resp.data);
+//       setSuccessMessage("Posted successfully")
+//       // console.log(resp.data);
+//       setTitle("");
+//       setBody("");
       
-    } catch(error){
-        setError(error.message);
-    }finally{
-        setLoading(false);
-    }
-  }
+//     } catch(error){
+//         setError(error.message);
+//     }finally{
+//         setLoading(false);
+//     }
+//   }
 
-  if(loading){
-    return(<>Loading...</>)
-  }
+//   if(loading){
+//     return(<>Loading...</>)
+//   }
 
-  if(error){
-    return(<>{error}</>)
-  }
+//   if(error){
+//     return(<>{error}</>)
+//   }
 
-  return(
-    <>
-      <input type="text" onChange={(e)=>setTitle(e.target.value)} />
-      <input type="text" onChange={(e)=>setBody(e.target.value)} />
-      <button onClick={()=>{title.length===0 || body.length===0 ? setError("Title or body cannot be empty") : postDetails()}}>Submit</button>
-      {
-        post &&
-        <>
-        <p>{post.title}</p>
-        <p>{post.body}</p>
-        </>
+//   return(
+//     <>
+//       <input type="text" onChange={(e)=>setTitle(e.target.value)} />
+//       <input type="text" onChange={(e)=>setBody(e.target.value)} />
+//       <button onClick={()=>{title.length===0 || body.length===0 ? setError("Title or body cannot be empty") : postDetails()}}>Submit</button>
+//       {
+//         successMessage &&
+//         <>
+//         <p>{successMessage}</p>
+//         </>
         
-      }
-    </>
-  )
-}
+//       }
+//     </>
+//   )
+// }
