@@ -16,6 +16,7 @@ export default function App() {
   const [movies,setMovies] = useState([]);
   const [filteredMovies,setFilteredMovies] = useState([]);
   const [search,setSearch] = useState("");
+  const [hasSearched, setHasSearched] = useState("");
 
   useEffect(()=>{
     async function getMovies() {
@@ -36,11 +37,15 @@ export default function App() {
   {
     const result = movies.filter((movie)=>movie.name.toLowerCase().includes(search.toLowerCase()));
     setFilteredMovies(result);
+    setHasSearched(search);
+    // console.log();
+    
   }
 
   function handleClear(){
     setSearch("");
     setFilteredMovies(movies);
+    setHasSearched("");
   }
 
   if(loading){
@@ -61,8 +66,10 @@ export default function App() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e => {
-            if(e.key==="Enter"){
-              handleSearch();
+            if(search.trim().length!==0){
+              if(e.key==="Enter"){
+                handleSearch();
+              }
             }
           })}
         />
@@ -74,14 +81,15 @@ export default function App() {
           Search
         </Button>
         <Button className='btn btn-danger' 
-        onClick={handleClear}>Clear</Button>
+        onClick={handleClear} disabled={search.trim().length===0}>Clear</Button>
 
       </InputGroup>
       </div>
-
+    {hasSearched.trim().length!==0 && <p>Search results for: {hasSearched}</p>}
     {filteredMovies.length===0 ?
       <p>No Movies Found</p> 
-      :
+      : 
+      
       <Row className="mx-5">
         {filteredMovies.map((movie)=>{
           return(
@@ -92,6 +100,7 @@ export default function App() {
               genre={movie.genres}
               year={movie.premiered}
               rating={movie.rating?.average}
+              summary={movie.summary}
               />
             </Col>
           )
