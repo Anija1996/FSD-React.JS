@@ -38,6 +38,11 @@ export default function App() {
     setFilteredMovies(result);
   }
 
+  function handleClear(){
+    setSearch("");
+    setFilteredMovies(movies);
+  }
+
   if(loading){
     return(<p>Loading...</p>)
   }
@@ -53,6 +58,7 @@ export default function App() {
       <InputGroup className="mb-3">
         <Form.Control
           placeholder="Enter the movie name"
+          value={search}
           onChange={(e)=>setSearch(e.target.value)}
         />
         <Button 
@@ -61,9 +67,15 @@ export default function App() {
           >
           Search
         </Button>
+        <Button className='btn btn-danger' 
+        onClick={handleClear}>Clear</Button>
+
       </InputGroup>
       </div>
 
+    {filteredMovies.length===0 ?
+      <p>No Movies Found</p> 
+      :
       <Row className="mx-5">
         {filteredMovies.map((movie)=>{
           return(
@@ -71,14 +83,15 @@ export default function App() {
               <MovieCard 
               poster={movie.image?.medium}
               name={movie.name}
-              genre={movie.genre}
+              genre={movie.genres}
               year={movie.premiered}
-              rating={movie.average?.rating}
+              rating={movie.rating?.average}
               />
             </Col>
           )
         })}
       </Row>
+    }
     </>
   )
 }
