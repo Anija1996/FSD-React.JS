@@ -59,11 +59,17 @@ export default function App() {
         <Form.Control
           placeholder="Enter the movie name"
           value={search}
-          onChange={(e)=>setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e => {
+            if(e.key==="Enter"){
+              handleSearch();
+            }
+          })}
         />
         <Button 
           className='btn btn-warning'
           onClick={handleSearch}
+          disabled={search.trim().length===0}
           >
           Search
         </Button>
