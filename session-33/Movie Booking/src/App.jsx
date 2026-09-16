@@ -69,15 +69,22 @@ export default function App(){
           <Form.Control
             placeholder="Enter the movie name"
             value={search}
+            onKeyDown={(e=>{
+              if(e.key==="Enter" && search.trim().length!==0){
+                handleSearch();
+              }
+            })}
             onChange={(e)=>setSearch(e.target.value)}
           />
           <Button 
             variant="outline-secondary" 
             className="btn btn-warning text-dark" 
+            disabled={search.trim().length===0}
             onClick={handleSearch} >Search</Button>
           <Button 
             variant="outline-secondary"   
             className="btn btn-danger text-dark"
+            disabled={search.trim().length===0}
             onClick={handleClear}>Clear</Button>
         </InputGroup>
     </div>
