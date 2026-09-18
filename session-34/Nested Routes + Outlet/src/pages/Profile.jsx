@@ -1,12 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
 const Profile = () => {
-    const {id} = useParams();
 
 	return (
 		<main style={styles.page}>
-            <p>User ID: {id}</p>
 			<section style={styles.card} aria-labelledby="profile-title">
 				<div style={styles.cover} />
 				<div style={styles.content}>
