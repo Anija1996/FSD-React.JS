@@ -3,6 +3,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Shopping from "./Pages/Shopping";
 import Contact from "./Pages/Contact";
+import Products from "./Pages/Products";
 import Navbar from "./components/Navbar";
 
 export default function App(){
@@ -14,7 +15,7 @@ export default function App(){
       <Route path="/about"  element={<About />} />
       <Route path="/shopping" element={<Shopping />} />
       <Route path="/contact" element={<Contact  />} />
-
+      <Route path="/products/:id" element={<Products/>}/>
     </Routes>
     </>
   )

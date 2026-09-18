@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 export default function Shopping(){
@@ -17,7 +18,9 @@ export default function Shopping(){
                     <Card.Text>
                     Exciting Collections
                     </Card.Text>
-                    <Button variant="primary">Buy Now</Button>
+                    <Link to="/products/1">
+                        <Button variant="primary">Buy Now</Button>
+                    </Link>
                 </Card.Body>
             </Card>
             <Card className="bg-dark text-white" style={{ width: '18rem' }}>
@@ -27,7 +30,9 @@ export default function Shopping(){
                     <Card.Text>
                     Exciting Collections
                     </Card.Text>
-                    <Button variant="primary">Buy Now</Button>
+                    <Link to="/products/2"> 
+                        <Button variant="primary">Buy Now</Button>
+                    </Link>
                 </Card.Body>
             </Card>
             <Card className="bg-dark text-white" style={{ width: '18rem' }}>
@@ -37,8 +42,9 @@ export default function Shopping(){
                     <Card.Text>
                     Exciting Collections
                     </Card.Text>
-                    <Button variant="primary">Buy Now</Button>
-                </Card.Body>
+                    <Link to="/products/3"> 
+                        <Button variant="primary">Buy Now</Button>
+                    </Link>                </Card.Body>
             </Card>
             </div>
         </>
